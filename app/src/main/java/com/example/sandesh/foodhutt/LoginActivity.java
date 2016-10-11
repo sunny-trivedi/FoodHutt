@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 
 public class LoginActivity extends AppCompatActivity {
-
+    EditText etUser;
+    EditText etPass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
         final TextView tvRegister = (TextView) findViewById(R.id.tvRegister);
         final Button btLogin = (Button) findViewById(R.id.btLogin);
 
+        final FoodHutUser userOne = new FoodHutUser("Username","Password");
         tvRegister.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -35,12 +37,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                EditText etUsername = (EditText) findViewById(R.id.etUsername);
-                EditText etPassword = (EditText) findViewById(R.id.etPassword);
-               //if (etUsername.toString() == "Username" && etPassword.toString() == "Password")
-              // {
-                   Intent MainActivity = new Intent(LoginActivity.this, MainActivity.class);
-                   LoginActivity.this.startActivity(MainActivity);
+                 etUser = (EditText) findViewById(R.id.etUsername);
+                etPass = (EditText) findViewById(R.id.etPassword);
+                String username = etUser.getText().toString();
+
+                if (userOne.getUsername() == username) {
+                    Intent MainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                    LoginActivity.this.startActivity(MainActivity);
+                }
                //}
             }
 
